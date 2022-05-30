@@ -1,1 +1,1 @@
-# ga-jacoco-coverage
+  -coverage
