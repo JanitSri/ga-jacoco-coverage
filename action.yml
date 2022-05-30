@@ -1,0 +1,10 @@
+name: 'JaCoCo Test Coverage'
+author: 'Janit Sriganeshaelankovan'
+description: 'View JaCoCo Test Coverage on PR'
+inputs:
+  githubToken: 
+    description: 'Github Token'
+    required: true
+runs:
+  using: 'node17'
+  main: 'dist/index.js'
