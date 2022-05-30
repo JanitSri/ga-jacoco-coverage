@@ -1,0 +1,13 @@
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test Job
+    steps:
+      - name: Test Action Step 1
+        uses: /JanitSri/ga-jacoco-coverage@v1.1
+
+    
