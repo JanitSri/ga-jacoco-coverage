@@ -8870,17 +8870,14 @@ async function run() {
     const context = github.context;
 
     const { comment } = context.payload;
-    // const { pull_request } = context.payload;
+    const issue = context.issue;
 
-    // await octokit.rest.issues.createComment({
-    //     repo: context.repo.repo,
-    //     owner: context.repo.owner,
-    //     issue_number: pull_request.number,
-    //     body: `Hello World - PR Number: ${pull_request.number}`
-    // });
-
-    console.log(comment);
-    console.log(context.issue);
+    await octokit.rest.issues.createComment({
+        repo: issue.repo,
+        owner: issue.owner,
+        issue_number: issue.pull_request,
+        body: `Hello World - PR Number: ${pull_request.number}...runnigng code coverage`
+    });
 }
 
 run();
