@@ -8,6 +8,6 @@ jobs:
     name: Test Job
     steps:
       - name: Test Action Step 1
-        uses: /JanitSri/ga-jacoco-coverage@v1.1
+        uses: /JanitSri/ga-jacoco-coverage@v1.2
 
     
