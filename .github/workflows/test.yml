@@ -1,11 +1,12 @@
 on:
-  pull_request:
-    types: [opened]
+  issue_comment:
+    types: [created]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: Comment Job
+    name: PR Comment Job
+    if: ${{ github.event.issue.pull_request }}
     steps:
       - name: Comment Action Step 1
         uses: /JanitSri/ga-jacoco-coverage@v1.5
