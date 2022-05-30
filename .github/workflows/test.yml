@@ -9,7 +9,7 @@ jobs:
     if: ${{ github.event.issue.pull_request }}
     steps:
       - name: Comment Action Step 1
-        uses: /JanitSri/ga-jacoco-coverage@v1.8
+        uses: /JanitSri/ga-jacoco-coverage@v1.9
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 

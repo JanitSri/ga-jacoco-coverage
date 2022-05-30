@@ -13,9 +13,11 @@ async function run() {
     await octokit.rest.issues.createComment({
         repo: issue.repo,
         owner: issue.owner,
-        issue_number: issue.pull_request,
-        body: `Hello World - PR Number: ${pull_request.number}...runnigng code coverage`
+        issue_number: issue.number,
+        body: `Hello World - PR Number: ${issue.number}...runnigng code coverage - ${comment.body}`
     });
+
+    console.log(comment);
 }
 
 run();
