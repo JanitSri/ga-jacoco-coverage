@@ -5,9 +5,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: Test Job
+    name: Comment Job
     steps:
-      - name: Test Action Step 1
-        uses: /JanitSri/ga-jacoco-coverage@v1.2
+      - name: Comment Action Step 1
+        uses: /JanitSri/ga-jacoco-coverage@v1.3
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
 
     
