@@ -5,6 +5,9 @@ inputs:
   githubToken: 
     description: 'Github Token'
     required: true
+  filename: 
+    description: 'Filename for the Dependency Tree (with extension)'
+    default: 'dependency.txt'
 runs:
   using: 'node16'
   main: 'dist/index.js'
