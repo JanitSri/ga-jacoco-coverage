@@ -8723,6 +8723,14 @@ module.exports = require("fs");
 
 /***/ }),
 
+/***/ 3292:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs/promises");
+
+/***/ }),
+
 /***/ 3685:
 /***/ ((module) => {
 
@@ -8863,6 +8871,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(782);
 const github = __nccwpck_require__(5478);
 const path = __nccwpck_require__(1017);
+const fs = __nccwpck_require__(3292);
 
 async function run() {
     const GITHUB_TOKEN = core.getInput('githubToken');
@@ -8884,11 +8893,18 @@ async function run() {
     
     const GITHUB_WORKSPACE = process.env.GITHUB_WORKSPACE;
     const FILENAME = core.getInput('filename');
-    readFile(path.join(process.env.GITHUB_WORKSPACE, filename))
+    await readFile(path.join(GITHUB_WORKSPACE, FILENAME))
 }
 
-function readFile(filename) {
+async function readFile(filename) {
     console.log(`Reading file: ${filename}`);
+
+    try {
+        let content = await fs.readFile(filename, { encoding: 'utf8' });    
+        console.log(`CONTENT: ${content}`);
+    } catch (err) {
+        console.log(`ERROR: getting file - ${err}`);
+    }
 }
 
 run();

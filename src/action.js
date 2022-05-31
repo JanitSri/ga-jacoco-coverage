@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const path = require('path');
+const fs = require('fs/promises');
 
 async function run() {
     const GITHUB_TOKEN = core.getInput('githubToken');
@@ -22,11 +23,18 @@ async function run() {
     
     const GITHUB_WORKSPACE = process.env.GITHUB_WORKSPACE;
     const FILENAME = core.getInput('filename');
-    readFile(path.join(process.env.GITHUB_WORKSPACE, filename))
+    await readFile(path.join(GITHUB_WORKSPACE, FILENAME))
 }
 
-function readFile(filename) {
+async function readFile(filename) {
     console.log(`Reading file: ${filename}`);
+
+    try {
+        let content = await fs.readFile(filename, { encoding: 'utf8' });    
+        console.log(`CONTENT: ${content}`);
+    } catch (err) {
+        console.log(`ERROR: getting file - ${err}`);
+    }
 }
 
 run();
